@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank App</title>
+    <style>
+      .p1 {
+        font-family: "Times New Roman", Times, serif;
+      }
+      .p2 {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .bank-app {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+      }
+
+      input {
+        border-radius: 5px;
+      }
+
+      .transaction-type {
+        margin: 40px 90px;
+      }
+
+      .transaction {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        background-color: #343a40;
+        color: white;
+        border-radius: 5px;
+      }
+      #debit {
+        margin-left: 50px;
+      }
+    </style>
+  </head>
+  <body class="p1">
+    <div class="bank-app">
+      <center><h1>Bank App</h1></center>
+      <div class="form-group">
+        <label for="name" class="p2">Name:</label>&nbsp;
+        <input type="text" id="name" class="p1" placeholder="Your name" />
+      </div>
+      <br />
+
+      <div class="form-group">
+        <label for="purpose" class="p2">Purpose of Debit (Optional):</label
+        >&nbsp;
+        <input
+          type="text"
+          id="purpose"
+          class="p1"
+          placeholder="e.g., Groceries"
+        />
+      </div>
+      <br />
+
+      <div class="form-group">
+        <label for="source" class="p2">Source of Credit (Optional)</label>
+        <input type="text" id="source" class="p1" placeholder="e.g., Salary" />
+      </div>
+      <br />
+
+      <div class="form-group">
+        <label for="amount" class="p2">Enter Transaction Amount</label>&nbsp;
+        <input type="text" id="amount" class="p1" placeholder="Amount" />
+
+        <div class="transaction-type">
+          <button class="transaction" id="credit">Credit</button>
+
+          <button class="transaction" id="debit">Debit</button>
+        </div>
+
+        <center><div>Your Account Balance is: Rs.0</div></center>
+      </div>
+    </div>
+  </body>
+</html>
