@@ -76,8 +76,50 @@
           <button class="transaction" id="debit">Debit</button>
         </div>
 
-        <center><div>Your Account Balance is: Rs.0</div></center>
+        <center>
+          <div>
+            Your Account Balance is: Rs. <span id="current_balance_el"></span>0
+          </div>
+        </center>
       </div>
     </div>
+    <script>
+      const creditBtn = document.getElementById("credit");
+      const debitBtn = document.getElementById("debit");
+      const amountEl = document.getElementById("amount");
+      const current_balance_el = document.getElementById("current_balance_el");
+
+      creditBtn.addEventListener("click", function () {
+        const entered_amount = parseInt(amountEl.value);
+        if (isNaN(entered_amount)) {
+          alert("Please enter a valid number");
+          return;
+        }
+
+        var account_balance =
+          parseInt(current_balance_el.innerText) + parseInt(entered_amount);
+        current_balance_el.innerText = parseInt(account_balance);
+        amountEl.value = "";
+      });
+
+      debitBtn.addEventListener("click", function () {
+        const entered_amount = parseInt(amountEl.value);
+        if (isNaN(entered_amount)) {
+          alert("Please enter a valid number");
+          return;
+        }
+
+        var current_balance = parseInt(current_balance_el.innerText);
+        if (entered_amount > current_balance) {
+          alert("Insufficient balance");
+          return;
+        }
+
+        var account_balance =
+          parseInt(current_balance_el.innerText) - parseInt(entered_amount);
+        current_balance_el.innerText = parseInt(account_balance);
+        amountEl.value = "";
+      });
+    </script>
   </body>
 </html>
