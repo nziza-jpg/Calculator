@@ -37,6 +37,12 @@
       #debit {
         margin-left: 50px;
       }
+      .validation-message {
+        color: red;
+        text-align: center;
+        margin-top: 10px;
+        font-family: Arial, sans-serif;
+      }
     </style>
   </head>
   <body class="p1">
@@ -80,6 +86,8 @@
           <div>
             Your Account Balance is: K. <span id="current_balance_el">0</span>
           </div>
+
+          <div id="validation-message" class="validation-message"></div>
         </center>
       </div>
     </div>
@@ -88,14 +96,21 @@
       const debitBtn = document.getElementById("debit");
       const amountEl = document.getElementById("amount");
       const current_balance_el = document.getElementById("current_balance_el");
+      const validationMessage = document.getElementById("validation-message");
 
+      function showValidationMessage(message) {
+        validationMessage.textContent = message;
+      }
       creditBtn.addEventListener("click", function () {
         const entered_amount = parseInt(amountEl.value);
-        if (isNaN(entered_amount)) {
-          alert("Please enter a valid number");
+        if (amountEl.value === "") {
+          showValidationMessage("Please enter amount");
           return;
         }
-
+        if (isNaN(entered_amount) || entered_amount <= 0) {
+          showValidationMessage("Please enter amount greater than zero");
+          return;
+        }
         var account_balance =
           parseInt(current_balance_el.innerText) + parseInt(entered_amount);
         current_balance_el.innerText = parseInt(account_balance);
@@ -104,14 +119,20 @@
 
       debitBtn.addEventListener("click", function () {
         const entered_amount = parseInt(amountEl.value);
-        if (isNaN(entered_amount)) {
-          alert("Please enter a valid number");
+        if (amountEl.value === "") {
+          showValidationMessage("Please enter amount");
+          return;
+        }
+        if (isNaN(entered_amount) || entered_amount <= 0) {
+          showValidationMessage("Please enter amount greater than zero");
           return;
         }
 
         var current_balance = parseInt(current_balance_el.innerText);
         if (entered_amount > current_balance) {
-          alert("Insufficient balance");
+          showValidationMessage(
+            "You do not have sufficient balance. Please lessen the amount"
+          );
           return;
         }
 
