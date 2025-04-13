@@ -67,8 +67,8 @@
       <br />
 
       <div class="form-group">
-        <label for="amount" class="p2">Enter Transaction Amount</label>&nbsp;
-        <input type="text" id="amount" class="p1" placeholder="Amount" />
+        <label for="amount" class="p2">Enter Transaction Amount </label>&nbsp;
+        <input type="number" id="amount" class="p1" placeholder="Amount" />
 
         <div class="transaction-type">
           <button class="transaction" id="credit">Credit</button>
@@ -78,7 +78,7 @@
 
         <center>
           <div>
-            Your Account Balance is: Rs. <span id="current_balance_el"></span>0
+            Your Account Balance is: K. <span id="current_balance_el">0</span>
           </div>
         </center>
       </div>
@@ -115,9 +115,8 @@
           return;
         }
 
-        var account_balance =
-          parseInt(current_balance_el.innerText) - parseInt(entered_amount);
-        current_balance_el.innerText = parseInt(account_balance);
+        var account_balance = current_balance - entered_amount;
+        current_balance_el.innerText = account_balance;
         amountEl.value = "";
       });
     </script>
